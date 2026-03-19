@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOoTLAB - Professional Camera Store</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f8f8f8;
+      --light-gray: #f0f0f0;
+      --border-gray: #e0e0e0;
+      --mid-gray: #999;
+      --dark-gray: #333;
+      --black: #111;
+      --accent: #111111;
+      --accent-hover: #444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff;
+      color: var(--dark-gray);
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-gray);
+      padding: 12px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: box-shadow 0.3s;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: var(--black) !important;
+    }
+
+    .navbar-brand span {
+      color: #888;
+    }
+
+    .nav-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dark-gray) !important;
+      padding: 8px 16px !important;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: var(--black) !important;
+    }
+
+    /* ===== BRAND DROPDOWN ===== */
+    .dropdown-menu {
+      border: 1px solid var(--border-gray);
+      border-radius: 0;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      min-width: 200px;
+      padding: 8px 0;
+    }
+
+    .dropdown-item {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      color: var(--dark-gray);
+      transition: all 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background: var(--off-white);
+      color: var(--black);
+      padding-left: 28px;
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1920&q=80') center/cover no-repeat;
+      opacity: 0.35;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.08);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    /* Floating camera icons bg */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      opacity: 0.05;
+      animation: floatUp linear infinite;
+      font-size: 40px;
+      color: white;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.05;
+      }
+
+      90% {
+        opacity: 0.05;
+      }
+
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: white;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease 0.2s both;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(60px, 10vw, 140px);
+      line-height: 0.9;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s ease 0.4s both;
+    }
+
+    .hero-title .line2 {
+      color: rgba(255, 255, 255, 0.4);
+      display: block;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 480px;
+      margin-top: 24px;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      animation: fadeInUp 1s ease 0.8s both;
+    }
+
+    .btn-hero-primary {
+      background: white;
+      color: black;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 2px solid white;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-hero-primary:hover {
+      background: transparent;
+      color: white;
+    }
+
+    .btn-hero-secondary {
+      background: transparent;
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-hero-secondary:hover {
+      border-color: white;
+      color: white;
+    }
+
+    /* Stats row */
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      animation: fadeInUp 1s ease 1s both;
+    }
+
+    .stat-item {
+      padding: 24px 40px;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-top: 4px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 100px;
+      right: 40px;
+      z-index: 2;
+      writing-mode: vertical-rl;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.3);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+
+      0%,
+      100% {
+        transform: scaleY(1);
+      }
+
+      50% {
+        transform: scaleY(0.4);
+      }
+    }
+
+    /* ===== SECTION STYLES ===== */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 1px;
+      line-height: 1;
+      color: var(--black);
+    }
+
+    .section-line {
+      width: 48px;
+      height: 2px;
+      background: var(--black);
+      margin: 20px 0;
+    }
+
+    /* ===== FEATURED CATEGORIES ===== */
+    .categories-section {
+      background: var(--off-white);
+    }
+
+    .cat-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid var(--border-gray);
+      background: white;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cat-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      border-color: #ccc;
+    }
+
+    .cat-img-wrap {
+      overflow: hidden;
+      height: 200px;
+      background: var(--light-gray);
+    }
+
+    .cat-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cat-card:hover .cat-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .cat-body {
+      padding: 20px;
+      background: white;
+    }
+
+    .cat-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--black);
+    }
+
+    .cat-count {
+      font-size: 11px;
+      color: #999;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    .cat-arrow {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      background: var(--black);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cat-card:hover .cat-arrow {
+      opacity: 1;
+    }
+
+    /* ===== PRODUCTS SECTION ===== */
+    .products-section {
+      background: white;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      background: white;
+      border: 1.5px solid var(--border-gray);
+      color: var(--dark-gray);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--black);
+      border-color: var(--black);
+      color: white;
+    }
+
+    /* Product Card */
+    .product-card {
+      border: 1px solid var(--border-gray);
+      background: white;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-4px);
+      border-color: #ccc;
+    }
+
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--off-white);
+      aspect-ratio: 4/3;
+    }
+
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    /* Image change overlay */
+    .img-change-btn {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #ddd;
+      border-radius: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      color: #555;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 2;
+    }
+
+    .product-card:hover .img-change-btn {
+      opacity: 1;
+    }
+
+    .img-change-btn:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    /* Image Upload Input */
+    .img-upload-input {
+      display: none;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      background: var(--black);
+      color: white;
+    }
+
+    .product-body {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-brand {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 6px;
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .product-cat-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      background: var(--light-gray);
+      color: #666;
+      margin-bottom: 14px;
+    }
+
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 16px;
+      margin-top: auto;
+    }
+
+    .btn-detail {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 11px 0;
+      background: var(--black);
+      color: white;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+
+    .btn-detail:hover {
+      background: #444;
+      color: white;
+    }
+
+    /* ===== BRANDS SECTION ===== */
+    .brands-section {
+      background: var(--off-white);
+    }
+
+    .brand-logo-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 70px;
+      border: 1px solid var(--border-gray);
+      background: white;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 3px;
+      color: #bbb;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .brand-logo-item:hover {
+      background: var(--black);
+      color: white;
+      border-color: var(--black);
+    }
+
+    /* ===== WHY US SECTION ===== */
+    .why-section {
+      background: white;
+    }
+
+    .feature-item {
+      padding: 32px;
+      border: 1px solid var(--border-gray);
+      background: white;
+      transition: all 0.3s;
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--border-gray);
+    }
+
+    .feature-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.7;
+    }
+
+    /* ===== CTA SECTION ===== */
+    .cta-section {
+      background: var(--black);
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: 'FOOTLAB';
+      position: absolute;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 300px;
+      color: rgba(255, 255, 255, 0.03);
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      letter-spacing: 10px;
+      pointer-events: none;
+    }
+
+    .cta-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 6vw, 80px);
+      color: white;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .cta-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    .btn-cta {
+      display: inline-block;
+      margin-top: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 18px 48px;
+      background: white;
+      color: black;
+      border: 2px solid white;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-cta:hover {
+      background: transparent;
+      color: white;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0a0a0a;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 60px 0 30px;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 5px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .footer-desc {
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-title {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .footer-link {
+      display: block;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .footer-divider {
+      border-color: rgba(255, 255, 255, 0.08);
+      margin: 40px 0 20px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+    }
+
+    /* ===== LOAD MORE ===== */
+    .btn-load-more {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 48px;
+      background: white;
+      border: 2px solid var(--black);
+      color: var(--black);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-load-more:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    /* ===== SEARCH BAR ===== */
+    .search-wrap {
+      position: relative;
+      max-width: 440px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 48px 12px 16px;
+      font-size: 13px;
+      border: 1.5px solid var(--border-gray);
+      background: white;
+      outline: none;
+      font-family: 'Montserrat', sans-serif;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--black);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      font-size: 14px;
+    }
+
+    /* ===== TOAST ===== */
+    .toast-notify {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--black);
+      color: white;
+      padding: 14px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .toast-notify.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Animations on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">FOoT<span>LAB</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/shop.html">Shop</a></li>
+
+          <!-- BRANDS DROPDOWN -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu" id="brandDropdown">
+              <li><a class="dropdown-item" href="pages/shop.html?brand=all">All Brands</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="pages/compare.html">Compare</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/contact.html">Contact</a></li>
+        </ul>
+        <!-- <div class="d-flex align-items-center gap-3">
+          <a href="pages/shop.html"
+            style="text-decoration:none;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase
+          ;color:#111;padding:10px 24px;border:2px solid #111;transition:all 0.3s;"
+            onmouseover="this.style.background='#111';this.style.color='#fff'"
+            onmouseout="this.style.background='transparent';this.style.color='#111'">
+            <i class="fas fa-shopping-bag me-2"></i>Shop Now
+          </a>
+        </div> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <!-- Floating camera particles -->
+    <div class="hero-particles" id="heroParticles"></div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      Scroll
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="hero-content">
+            <p class="hero-eyebrow">Pakistan's Premium Camera Store</p>
+            <h1 class="hero-title">
+              Capture<br>
+              <span class="line2">Every Moment</span>
+            </h1>
+            <p class="hero-desc">70+ premium cameras and accessories. Canon, Nikon, Sony, Fujifilm and much more — all
+              in one place.</p>
+            <div class="hero-btns">
+              <a href="pages/shop.html" class="btn-hero-primary">Shop All Products</a>
+              <a href="#brands" class="btn-hero-secondary">Browse Brands</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats bar -->
+    <div class="hero-stats">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <div class="stat-num">73+</div>
+              <div class="stat-label">Products</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <div class="stat-num">15+</div>
+              <div class="stat-label">Top Brands</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Genuine Products</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Customer Rating</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES SECTION -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Browse By Type</p>
+        <h2 class="section-title">Product Categories</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="row g-3 mt-2">
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=Mirrorless" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://cdn.thewirecutter.com/wp-content/media/2025/12/BEST-MIRRORLESS-CAMERAS-GROUP-2X1-2048PX-102-2x1-1.jpg?width=1024&quality=75&crop=2:1&auto=webp"
+                alt="Mirrorless"></div>
+            <div class="cat-body">
+              <div class="cat-name">Mirrorless</div>
+              <div class="cat-count">18 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=DSLR" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://www.adobe.com/creativecloud/photography/discover/media_1e0bf364a3f9ed28e859175ae5e160da795dfdd14.jpg?width=2000&format=webply&optimize=medium"
+                alt="DSLR"></div>
+            <div class="cat-body">
+              <div class="cat-name">DSLR</div>
+              <div class="cat-count">8 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=Lens" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://nikonrumors.com/wp-content/uploads/2021/05/Nikon-Nikkor-Z-lens-lineup.png" alt="Lenses">
+            </div>
+            <div class="cat-body">
+              <div class="cat-name">Lenses</div>
+              <div class="cat-count">20 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=Action" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://www.redsharknews.com/hubfs/Which%20action%20camera%20to%20buy.jpg" alt="Action"></div>
+            <div class="cat-body">
+              <div class="cat-name">Action</div>
+              <div class="cat-count">7 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=Compact" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://shotkit.com/wp-content/uploads/2024/03/Fujifilm-X100VI-Camera-7.jpg" alt="Compact"></div>
+            <div class="cat-body">
+              <div class="cat-name">Compact</div>
+              <div class="cat-count">8 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 reveal">
+          <a href="pages/shop.html?cat=Accessories" class="cat-card">
+            <div class="cat-img-wrap"><img
+                src="https://pisces.bbystatic.com/image2/BestBuy_US/dam/pol-MMT-404425-210426_DER-8d500e1f-320c-4a14-909f-753ec318837e.jpg;maxHeight=455;maxWidth=815"
+                alt="Accessories"></div>
+            <div class="cat-body">
+              <div class="cat-name">Accessories</div>
+              <div class="cat-count">12 Products</div>
+            </div>
+            <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="row align-items-end mb-4 reveal">
+        <div class="col-md-6">
+          <p class="section-label">Featured Collection</p>
+          <h2 class="section-title">Our Products</h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div class="search-wrap ms-md-auto">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search cameras, lenses...">
+            <i class="fas fa-search search-icon"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Mirrorless">Mirrorless</button>
+        <button class="filter-btn" data-filter="DSLR">DSLR</button>
+        <button class="filter-btn" data-filter="Lens">Lenses</button>
+        <button class="filter-btn" data-filter="Compact">Compact</button>
+        <button class="filter-btn" data-filter="Action">Action</button>
+        <button class="filter-btn" data-filter="Cinema">Cinema</button>
+        <button class="filter-btn" data-filter="Medium Format">Medium Format</button>
+        <button class="filter-btn" data-filter="Flash">Flash</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="row g-3" id="productsGrid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="text-center mt-5 reveal">
+        <button class="btn-load-more" id="loadMoreBtn">Load More Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRANDS SECTION -->
+  <section class="brands-section" id="brands">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="section-label">Official Partners</p>
+        <h2 class="section-title">Top Brands</h2>
+        <div class="section-line mx-auto"></div>
+      </div>
+      <div class="row g-2 reveal" id="brandsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY FOOTLAB -->
+  <section class="why-section">
+    <div class="container">
+      <div class="text-center mb-5 reveal">
+        <p class="section-label">Why Choose Us</p>
+        <h2 class="section-title">The FOoTLAB Difference</h2>
+        <div class="section-line mx-auto"></div>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="feature-title">100% Genuine</div>
+            <div class="feature-desc">All products are imported from official dealers. Fully genuine and with warranty..
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-truck"></i></div>
+            <div class="feature-title">Fast Delivery</div>
+            <div class="feature-desc">Same-day delivery in Karachi and delivery across Pakistan within 2-3 days.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-headset"></i></div>
+            <div class="feature-title">Expert Support</div>
+            <div class="feature-desc">Our experienced photographers help you choose the right camera.</div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 reveal">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fas fa-undo"></i></div>
+            <div class="feature-title">Easy Returns</div>
+            <div class="feature-desc">7-day hassle-free return policy. No questions, no trouble.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-7 reveal">
+          <h2 class="cta-title">Ready to Shoot?<br>Let's Find Your Camera</h2>
+          <p class="cta-desc">70+ products, 15+ brands — the perfect companion for your photography journey is here.</p>
+          <a href="pages/shop.html" class="btn-cta">Explore All Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">FOOTLAB</div>
+          <p class="footer-desc">Pakistan's most trusted camera store. Premium cameras, lenses, and accessories with
+            official warranty.</p>
+          <div class="d-flex gap-3 mt-3">
+            <a href="#" style="color:#555;font-size:16px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:#555;font-size:16px;"><i class="fab fa-facebook"></i></a>
+            <a href="#" style="color:#555;font-size:16px;"><i class="fab fa-youtube"></i></a>
+            <a href="#" style="color:#555;font-size:16px;"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Shop</div>
+          <a href="pages/shop.html?cat=Mirrorless" class="footer-link">Mirrorless</a>
+          <a href="pages/shop.html?cat=DSLR" class="footer-link">DSLR</a>
+          <a href="pages/shop.html?cat=Lens" class="footer-link">Lenses</a>
+          <a href="pages/shop.html?cat=Action" class="footer-link">Action Cameras</a>
+          <a href="pages/shop.html?cat=Compact" class="footer-link">Compact</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Brands</div>
+          <a href="pages/shop.html?brand=Canon" class="footer-link">Canon</a>
+          <a href="pages/shop.html?brand=Nikon" class="footer-link">Nikon</a>
+          <a href="pages/shop.html?brand=Sony" class="footer-link">Sony</a>
+          <a href="pages/shop.html?brand=Fujifilm" class="footer-link">Fujifilm</a>
+          <a href="pages/shop.html?brand=GoPro" class="footer-link">GoPro</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Info</div>
+          <a href="pages/about.html" class="footer-link">About Us</a>
+          <a href="pages/contact.html" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Warranty Info</a>
+          <a href="#" class="footer-link">Return Policy</a>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="footer-title">Contact</div>
+          <a href="#" class="footer-link"><i class="fas fa-phone me-2"></i>0322-3680866</a>
+          <a href="#" class="footer-link"><i class="fas fa-envelope me-2"></i>info@foOtlab.pk</a>
+          <a href="#" class="footer-link"><i class="fas fa-map-marker-alt me-2"></i>Karachi, Pakistan</a>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <p class="footer-copy">© 2026 FOoTLAB. All Rights Reserved.</p>
+        <p class="footer-copy">Made with ❤️ in Pakistan</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast-notify" id="toastNotify"></div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/compare.js"></script>
+  <script>
+    // ===== NAVBAR SCROLL =====
+    $(window).on('scroll', function () {
+      if ($(this).scrollTop() > 50) $('#mainNav').addClass('scrolled');
+      else $('#mainNav').removeClass('scrolled');
+    });
+
+    // ===== HERO PARTICLES =====
+    const icons = ['fa-camera', 'fa-camera-retro', 'fa-eye', 'fa-aperture'];
+    const iconClasses = ['fa-camera', 'fa-camera-retro', 'fa-dot-circle', 'fa-circle'];
+    for (let i = 0; i < 12; i++) {
+      const p = document.createElement('i');
+      p.className = 'fas ' + iconClasses[i % 4] + ' particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (15 + Math.random() * 20) + 's';
+      p.style.animationDelay = (Math.random() * 15) + 's';
+      p.style.fontSize = (20 + Math.random() * 50) + 'px';
+      document.getElementById('heroParticles').appendChild(p);
+    }
+
+    // ===== BUILD BRAND DROPDOWN =====
+    brands.forEach(b => {
+      $('#brandDropdown').append(`<li><a class="dropdown-item" href="pages/shop.html?brand=${b}">${b}</a></li>`);
+    });
+
+    // ===== PRODUCTS RENDER =====
+    let visibleCount = 12;
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    function getFiltered() {
+      return products.filter(p => {
+        const matchFilter = currentFilter === 'all' || p.category === currentFilter;
+        const matchSearch = !currentSearch ||
+          p.name.toLowerCase().includes(currentSearch) ||
+          p.brand.toLowerCase().includes(currentSearch) ||
+          p.category.toLowerCase().includes(currentSearch);
+        return matchFilter && matchSearch;
+      });
+    }
+
+    function renderProducts() {
+      const filtered = getFiltered();
+      const toShow = filtered.slice(0, visibleCount);
+      let html = '';
+      toShow.forEach(p => {
+        html += `
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="product-card" data-id="${p.id}">
+              <div class="product-img-wrap">
+                <img src="${p.image}" alt="${p.name}" id="img-${p.id}" onerror="this.src='https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&q=80'">
+                ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
+                <button class="img-change-btn" onclick="triggerImgUpload(${p.id})" title="Change Image">
+                  <i class="fas fa-image"></i>
+                </button>
+                <input type="file" accept="image/*" class="img-upload-input" id="upload-${p.id}" onchange="changeProductImage(${p.id}, this)">
+              </div>
+              <div class="product-body">
+                <div class="product-brand">${p.brand}</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-cat-tag">${p.category}</div>
+                <div class="product-price">${p.price}</div>
+                <a href="pages/product.html?id=${p.id}" class="btn-detail">
+                  <i class="fas fa-arrow-right me-2"></i>More Details
+                </a>
+                <button class="btn-add-compare" data-compare-id="${p.id}" onclick="flToggleCompare(${p.id})">+ Add to Compare</button>
+              </div>
+            </div>
+          </div>`;
+      });
+      $('#productsGrid').html(html);
+      if (filtered.length <= visibleCount) $('#loadMoreBtn').hide();
+      else $('#loadMoreBtn').show();
+    }
+
+    // Image change
+    function triggerImgUpload(id) { $(`#upload-${id}`).click(); }
+    function changeProductImage(id, input) {
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          $(`#img-${id}`).attr('src', e.target.result);
+          showToast('Image updated!');
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    // Filter buttons
+    $('.filter-btn').on('click', function () {
+      $('.filter-btn').removeClass('active');
+      $(this).addClass('active');
+      currentFilter = $(this).data('filter');
+      visibleCount = 12;
+      renderProducts();
+    });
+
+    // Search
+    $('#searchInput').on('input', function () {
+      currentSearch = $(this).val().toLowerCase();
+      visibleCount = 12;
+      renderProducts();
+    });
+
+    // Load More
+    $('#loadMoreBtn').on('click', function () {
+      visibleCount += 8;
+      renderProducts();
+      showToast('More products loaded!');
+    });
+
+    // Brands grid
+    function renderBrands() {
+      let html = '';
+      brands.forEach(b => {
+        html += `<div class="col-4 col-md-3 col-lg-2"><a href="pages/shop.html?brand=${b}" class="brand-logo-item">${b}</a></div>`;
+      });
+      $('#brandsGrid').html(html);
+    }
+
+    // Toast
+    function showToast(msg) {
+      $('#toastNotify').text(msg).addClass('show');
+      setTimeout(() => $('#toastNotify').removeClass('show'), 2500);
+    }
+
+    // Scroll reveal
+    function checkReveal() {
+      $('.reveal').each(function () {
+        const top = $(this)[0].getBoundingClientRect().top;
+        if (top < window.innerHeight - 80) $(this).addClass('visible');
+      });
+    }
+    $(window).on('scroll', checkReveal);
+    checkReveal();
+
+    // Init
+    renderProducts();
+    renderBrands();
+  </script>
+</body>
+
+</html>

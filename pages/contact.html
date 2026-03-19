@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - FOoTLAB</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #111;
+      --off-white: #f8f8f8;
+      --border: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 4px;
+      color: var(--black) !important;
+    }
+
+    .navbar-brand span {
+      color: #888;
+    }
+
+    .nav-link {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #333 !important;
+      padding: 8px 16px !important;
+    }
+
+    .nav-link:hover {
+      color: var(--black) !important;
+    }
+
+    .dropdown-menu {
+      border: 1px solid var(--border);
+      border-radius: 0;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 8px 0;
+    }
+
+    .dropdown-item {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      transition: all 0.2s;
+    }
+
+    .dropdown-item:hover {
+      background: var(--off-white);
+      padding-left: 28px;
+    }
+
+    .page-hero {
+      background: var(--black);
+      padding: 130px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1400&q=80') center/cover;
+      opacity: 0.15;
+    }
+
+    .page-hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: white;
+      letter-spacing: 2px;
+      position: relative;
+    }
+
+    .page-hero-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    .contact-section {
+      padding: 80px 0 100px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      color: #555;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .form-control,
+    .form-select {
+      border: 1.5px solid var(--border);
+      border-radius: 0;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 13px 16px;
+      outline: none;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--black);
+      box-shadow: none;
+    }
+
+    .form-label {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--black);
+      color: white;
+      border: 2px solid var(--black);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-submit:hover {
+      background: #444;
+    }
+
+    .map-placeholder {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-placeholder i {
+      font-size: 48px;
+      color: #ccc;
+      margin-bottom: 16px;
+      display: block;
+      text-align: center;
+    }
+
+    footer {
+      background: #0a0a0a;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 60px 0 30px;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      letter-spacing: 5px;
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    .footer-link {
+      display: block;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .toast-notify {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--black);
+      color: white;
+      padding: 14px 24px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    .toast-notify.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">FOoT<span>LAB</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Brands</a>
+            <ul class="dropdown-menu" id="brandDropdown">
+              <li><a class="dropdown-item" href="shop.html?brand=all">All Brands</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="pages/compare.html">Compare</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1 class="page-hero-title">Contact Us</h1>
+      <p class="page-hero-sub">We're here — talk anytime.</p>
+    </div>
+  </div>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Info -->
+        <div class="col-lg-4">
+          <p
+            style="font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:#999;margin-bottom:12px;">
+            Get In Touch</p>
+          <h2
+            style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--black);letter-spacing:1px;margin-bottom:12px;">
+            Let's Talk</h2>
+          <div style="width:48px;height:2px;background:var(--black);margin-bottom:40px;"></div>
+          <p style="font-size:13px;color:#777;line-height:1.9;margin-bottom:40px;">Whatever the question, if you need
+            advice about a camera, or want to place an order — we are here. You can also message
+            on WhatsApp!</p>
+
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-label">Address</div>
+              <div class="contact-value">Shop No. 12, Camera Market, Saddar<br>Karachi, Pakistan</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact-label">Phone / WhatsApp</div>
+              <div class="contact-value">0322-3680866<br>0321-2455898</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">info@foOtlab.pk</div>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="contact-label">Hours</div>
+              <div class="contact-value">Mon–Sat: 10am – 8pm<br>Sunday: 12pm – 6pm</div>
+            </div>
+          </div>
+
+          <a href="https://wa.me/923223680866" target="_blank"
+            style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:14px 24px;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-top:10px;">
+            <i class="fab fa-whatsapp" style="font-size:18px;"></i> WhatsApp Us
+          </a>
+        </div>
+
+        <!-- Form -->
+        <div class="col-lg-8">
+          <div style="border:1px solid var(--border);padding:48px;">
+            <h3
+              style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--black);letter-spacing:1px;margin-bottom:32px;">
+              Send a Message</h3>
+
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-control" placeholder="Tehami-Mustafa" id="cName">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" placeholder="0300-XXXXXXX" id="cPhone">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" placeholder="your@email.com" id="cEmail">
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <select class="form-select" id="cSubject">
+                <option>Product Inquiry</option>
+                <option>Price Quote</option>
+                <option>Order Status</option>
+                <option>Return / Exchange</option>
+                <option>Technical Support</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="5" placeholder="Apna message yahan likhen..." id="cMsg"></textarea>
+            </div>
+            <button class="btn-submit" onclick="submitForm()">
+              <i class="fas fa-paper-plane me-2"></i>Send Message
+            </button>
+          </div>
+
+          <!-- Google Map -->
+          <div class="mt-4" style="border:1px solid var(--border);overflow:hidden;">
+            <div
+              style="background:var(--black);color:white;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;"><i
+                  class="fas fa-map-marker-alt me-2"></i>Our Location — Saddar, Karachi</span>
+              <a href="https://www.google.com/maps/place/Saddar,+Karachi" target="_blank"
+                style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#aaa;text-decoration:none;"
+                onmouseover="this.style.color='white'" onmouseout="this.style.color='#aaa'">
+                Open in Maps <i class="fas fa-external-link-alt ms-1"></i>
+              </a>
+            </div>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0!2d67.0099!3d24.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e9bf9252ae5%3A0x2a050e1157db1c54!2sSaddar%2C+Karachi%2C+Karachi+City%2C+Sindh%2C+Pakistan!5e0!3m2!1sen!2s!4v1"
+              width="100%" height="380" style="border:none;display:block;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="row g-4 mb-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">FOOTLAB</div>
+          <p style="font-size:12px;color:rgba(255,255,255,0.4);">Pakistan's most trusted camera store.</p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div
+            style="font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:white;margin-bottom:16px;">
+            Links</div>
+          <a href="../index.html" class="footer-link">Home</a>
+          <a href="shop.html" class="footer-link">Shop</a>
+          <a href="about.html" class="footer-link">About</a>
+          <a href="contact.html" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <hr style="border-color:rgba(255,255,255,0.08);">
+      <p style="font-size:11px;">© 2026 FOoTLAB. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-notify" id="toastNotify"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/products.js"></script>
+  <script>
+    $(window).on('scroll', function () { if ($(this).scrollTop() > 50) $('#mainNav').addClass('scrolled'); else $('#mainNav').removeClass('scrolled'); });
+    brands.forEach(b => { $('#brandDropdown').append(`<li><a class="dropdown-item" href="shop.html?brand=${b}">${b}</a></li>`); });
+
+    function submitForm() {
+      const name = $('#cName').val().trim();
+      const msg = $('#cMsg').val().trim();
+      if (!name || !msg) { showToast('Please fill required fields!'); return; }
+      showToast('Message sent! We will contact you soon.');
+      $('#cName,#cPhone,#cEmail,#cMsg').val('');
+    }
+
+    function showToast(msg) { $('#toastNotify').text(msg).addClass('show'); setTimeout(() => $('#toastNotify').removeClass('show'), 2800); }
+  </script>
+</body>
+
+</html>

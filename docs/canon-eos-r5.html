@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canon EOS R5 - Full Features | FOOTLAB</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Matches the FOOTLAB site theme exactly */
+    :root { --black:#111; --off-white:#f8f8f8; --border:#e0e0e0; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Montserrat',sans-serif; background:#fff; color:#333; }
+
+    /* Navbar - same as all other pages */
+    .navbar { background:rgba(255,255,255,0.96); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:12px 0; }
+    .navbar-brand { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:4px; color:var(--black) !important; }
+    .navbar-brand span { color:#888; }
+    .nav-link { font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#333 !important; padding:8px 16px !important; }
+    .nav-link:hover { color:var(--black) !important; }
+
+    /* Page content area */
+    .doc-wrap { padding: 60px 0 100px; }
+
+    /* Document Header */
+    .doc-header { background:var(--off-white); border-bottom:2px solid var(--black); padding:40px 0 30px; margin-bottom:50px; }
+    .doc-category-tag { font-size:10px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#999; margin-bottom:10px; }
+    .doc-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(36px,6vw,72px); letter-spacing:2px; color:var(--black); line-height:1; }
+    .doc-brand-line { font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:#666; margin-top:10px; }
+
+    /* Section headings inside the document */
+    .doc-section-title {
+      font-family:'Bebas Neue',sans-serif;
+      font-size:22px;
+      letter-spacing:2px;
+      color:var(--black);
+      text-transform:uppercase;
+      border-left:4px solid var(--black);
+      padding-left:14px;
+      margin-bottom:20px;
+    }
+
+    /* Description text */
+    .doc-description {
+      font-size:14px;
+      line-height:1.9;
+      color:#555;
+      max-width:780px;
+      margin-bottom:40px;
+      padding:24px;
+      background:var(--off-white);
+      border:1px solid var(--border);
+    }
+
+    /* Key Features list */
+    .feature-list { list-style:none; padding:0; margin:0 0 40px 0; }
+    .feature-list li {
+      font-size:13px;
+      font-weight:600;
+      color:#333;
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .feature-list li:last-child { border-bottom:none; }
+    .feature-list li::before {
+      content:'';
+      width:8px; height:8px;
+      background:var(--black);
+      flex-shrink:0;
+    }
+
+    /* Specs Table */
+    .specs-table { width:100%; border-collapse:collapse; margin-bottom:40px; }
+    .specs-table tr { border-bottom:1px solid var(--border); }
+    .specs-table tr:last-child { border-bottom:none; }
+    .specs-table td { padding:14px 16px; font-size:13px; }
+    .specs-table td:first-child {
+      font-weight:700;
+      letter-spacing:1px;
+      text-transform:uppercase;
+      font-size:11px;
+      color:#999;
+      width:200px;
+      background:var(--off-white);
+    }
+    .specs-table td:last-child { color:#333; }
+
+    /* Back button */
+    .btn-back {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      color:var(--black);
+      text-decoration:none;
+      border:2px solid var(--black);
+      padding:10px 24px;
+      transition:all 0.3s;
+      margin-bottom:40px;
+    }
+    .btn-back:hover { background:var(--black); color:white; }
+
+    /* Compare CTA */
+    .compare-cta {
+      background:var(--black);
+      color:white;
+      padding:32px;
+      margin-top:20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+    .compare-cta p { font-size:13px; color:rgba(255,255,255,0.6); margin:4px 0 0; }
+    .compare-cta h4 { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:2px; margin:0; }
+    .btn-compare {
+      display:inline-block;
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:2px;
+      text-transform:uppercase;
+      padding:14px 32px;
+      background:white;
+      color:black;
+      text-decoration:none;
+      border:2px solid white;
+      transition:all 0.3s;
+      white-space:nowrap;
+    }
+    .btn-compare:hover { background:transparent; color:white; }
+
+    /* Footer - minimal */
+    footer { background:#0a0a0a; color:rgba(255,255,255,0.4); padding:30px 0; text-align:center; font-size:11px; letter-spacing:1px; }
+    .footer-brand { font-family:'Bebas Neue',sans-serif; font-size:24px; color:white; letter-spacing:4px; margin-bottom:6px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR (matches site navbar) -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">FOOT<span>LAB</span></a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/shop.html">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/compare.html">Compare</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- DOCUMENT HEADER -->
+  <div class="doc-header">
+    <div class="container">
+      <div class="doc-category-tag">Mirrorless Camera &nbsp;|&nbsp; Full Feature Document</div>
+      <h1 class="doc-title">Canon EOS R5</h1>
+      <div class="doc-brand-line">Brand: Canon &nbsp;&nbsp;|&nbsp;&nbsp; Price: PKR 899,000</div>
+    </div>
+  </div>
+
+  <!-- DOCUMENT CONTENT -->
+  <div class="doc-wrap">
+    <div class="container">
+
+      <!-- Back button -->
+      <a href="../pages/shop.html" class="btn-back">
+        <i class="fas fa-arrow-left"></i> Back to Shop
+      </a>
+
+      <!-- Description -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="doc-section-title">Product Description</div>
+          <div class="doc-description">
+            The Canon EOS R5 is a professional-grade mirrorless camera built for photographers and videographers who demand the absolute best. Featuring a 45-megapixel full-frame CMOS sensor, it delivers extraordinary image quality with exceptional detail. Its ability to record internal 8K RAW video makes it one of the most capable hybrid cameras ever made. Backed by Dual Pixel CMOS AF II and an advanced in-body image stabilization system, the EOS R5 performs brilliantly in every shooting scenario — from fast-action sports to cinematic video production.
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-5">
+
+        <!-- Key Features -->
+        <div class="col-lg-6">
+          <div class="doc-section-title">Key Features</div>
+          <ul class="feature-list">
+            <li>45MP Full-Frame CMOS Sensor</li>
+            <li>8K RAW Internal Video Recording</li>
+            <li>Dual Pixel CMOS AF II with Deep Learning</li>
+            <li>20fps Continuous Shooting (Electronic Shutter)</li>
+            <li>5-Axis In-Body Image Stabilization (IBIS)</li>
+            <li>Animal and Human Eye Detection AF</li>
+            <li>Dual Card Slots (CFexpress + SD UHS-II)</li>
+            <li>Weather-Sealed Magnesium Alloy Body</li>
+            <li>0.5-inch OLED Electronic Viewfinder (5.76M dot)</li>
+            <li>3.15-inch Fully Articulating Touch Screen</li>
+            <li>Wi-Fi, Bluetooth, and USB-C Connectivity</li>
+            <li>RF Lens Mount — Compatible with RF and EF Lenses</li>
+          </ul>
+        </div>
+
+        <!-- Technical Specifications -->
+        <div class="col-lg-6">
+          <div class="doc-section-title">Technical Specifications</div>
+          <table class="specs-table">
+            <tr><td>Sensor Type</td><td>Full-Frame CMOS</td></tr>
+            <tr><td>Resolution</td><td>45 Megapixels</td></tr>
+            <tr><td>Processor</td><td>DIGIC X</td></tr>
+            <tr><td>Video</td><td>8K RAW / 4K HQ / 1080p</td></tr>
+            <tr><td>ISO Range</td><td>100 – 51,200 (Expandable to 102,400)</td></tr>
+            <tr><td>Autofocus Points</td><td>1,053 AF Zones</td></tr>
+            <tr><td>Burst Speed</td><td>20fps (Electronic) / 12fps (Mechanical)</td></tr>
+            <tr><td>Stabilization</td><td>5-Axis IBIS (Up to 8 stops)</td></tr>
+            <tr><td>Shutter Speed</td><td>1/8000s – 30s</td></tr>
+            <tr><td>Viewfinder</td><td>0.5" OLED, 5.76 Million Dots</td></tr>
+            <tr><td>Screen</td><td>3.15" Touch, Fully Articulating</td></tr>
+            <tr><td>Card Slots</td><td>CFexpress Type B + SD UHS-II</td></tr>
+            <tr><td>Battery Life</td><td>~320 shots (CIPA)</td></tr>
+            <tr><td>Body Material</td><td>Magnesium Alloy, Weather Sealed</td></tr>
+            <tr><td>Dimensions</td><td>138.5 x 97.5 x 88.0 mm</td></tr>
+            <tr><td>Weight</td><td>738g (with battery and card)</td></tr>
+            <tr><td>Lens Mount</td><td>Canon RF</td></tr>
+            <tr><td>Connectivity</td><td>Wi-Fi 5GHz, Bluetooth 4.2, USB-C 3.1</td></tr>
+          </table>
+        </div>
+
+      </div><!-- end row -->
+
+      <!-- Compare CTA -->
+      <div class="compare-cta">
+        <div>
+          <h4>Compare This Camera</h4>
+          <p>See how the Canon EOS R5 stacks up against Sony A7 III, Nikon D850 and more.</p>
+        </div>
+        <a href="../pages/compare.html" class="btn-compare">
+          <i class="fas fa-columns me-2"></i>Open Comparison Tool
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">FOOTLAB</div>
+    <p>© 2025 FOOTLAB. All Rights Reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
