@@ -10,264 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
-  <style>
-    :root {
-      --black: #111;
-      --off-white: #f8f8f8;
-      --border: #e0e0e0;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff;
-      color: #333;
-    }
-
-    .navbar {
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    .navbar.scrolled {
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .navbar-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px;
-      letter-spacing: 4px;
-      color: var(--black) !important;
-    }
-
-    .navbar-brand span {
-      color: #888;
-    }
-
-    .nav-link {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #333 !important;
-      padding: 8px 16px !important;
-    }
-
-    .nav-link:hover {
-      color: var(--black) !important;
-    }
-
-    .dropdown-menu {
-      border: 1px solid var(--border);
-      border-radius: 0;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-      padding: 8px 0;
-    }
-
-    .dropdown-item {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      transition: all 0.2s;
-    }
-
-    .dropdown-item:hover {
-      background: var(--off-white);
-      padding-left: 28px;
-    }
-
-    .page-hero {
-      background: var(--black);
-      padding: 130px 0 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .page-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=1400&q=80') center/cover;
-      opacity: 0.15;
-    }
-
-    .page-hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 80px;
-      color: white;
-      letter-spacing: 2px;
-      position: relative;
-    }
-
-    .page-hero-sub {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.5);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      position: relative;
-      margin-top: 8px;
-    }
-
-    .contact-section {
-      padding: 80px 0 100px;
-    }
-
-    .contact-info-item {
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      margin-bottom: 32px;
-    }
-
-    .contact-icon {
-      width: 48px;
-      height: 48px;
-      border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      flex-shrink: 0;
-      color: #555;
-    }
-
-    .contact-label {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #bbb;
-      margin-bottom: 6px;
-    }
-
-    .contact-value {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--black);
-    }
-
-    .form-control,
-    .form-select {
-      border: 1.5px solid var(--border);
-      border-radius: 0;
-      font-size: 13px;
-      font-family: 'Montserrat', sans-serif;
-      padding: 13px 16px;
-      outline: none;
-    }
-
-    .form-control:focus,
-    .form-select:focus {
-      border-color: var(--black);
-      box-shadow: none;
-    }
-
-    .form-label {
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 8px;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 16px;
-      background: var(--black);
-      color: white;
-      border: 2px solid var(--black);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-submit:hover {
-      background: #444;
-    }
-
-    .map-placeholder {
-      background: var(--off-white);
-      border: 1px solid var(--border);
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .map-placeholder i {
-      font-size: 48px;
-      color: #ccc;
-      margin-bottom: 16px;
-      display: block;
-      text-align: center;
-    }
-
-    footer {
-      background: #0a0a0a;
-      color: rgba(255, 255, 255, 0.5);
-      padding: 60px 0 30px;
-    }
-
-    .footer-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 36px;
-      letter-spacing: 5px;
-      color: white;
-      margin-bottom: 12px;
-    }
-
-    .footer-link {
-      display: block;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.4);
-      text-decoration: none;
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-
-    .footer-link:hover {
-      color: white;
-    }
-
-    .toast-notify {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--black);
-      color: white;
-      padding: 14px 24px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      z-index: 9999;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s;
-      pointer-events: none;
-    }
-
-    .toast-notify.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
@@ -280,10 +23,11 @@
         <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+          <!-- BRANDS DROPDOWN (SCROLLABLE) -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Brands</a>
-            <ul class="dropdown-menu" id="brandDropdown">
-              <li><a class="dropdown-item" href="shop.html?brand=all">All Brands</a></li>
+            <ul class="dropdown-menu" id="brandDropdown" style="max-height: 250px; overflow-y: auto;">
+              <li><a class="dropdown-item" href="pages/shop.html?brand=all">All Brands</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -392,7 +136,7 @@
             </div>
             <div class="mb-4">
               <label class="form-label">Message</label>
-              <textarea class="form-control" rows="5" placeholder="Apna message yahan likhen..." id="cMsg"></textarea>
+              <textarea class="form-control" rows="5" placeholder="Type Your Message Here..." id="cMsg"></textarea>
             </div>
             <button class="btn-submit" onclick="submitForm()">
               <i class="fas fa-paper-plane me-2"></i>Send Message
@@ -449,19 +193,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/js/products.js"></script>
-  <script>
-    $(window).on('scroll', function () { if ($(this).scrollTop() > 50) $('#mainNav').addClass('scrolled'); else $('#mainNav').removeClass('scrolled'); });
-    brands.forEach(b => { $('#brandDropdown').append(`<li><a class="dropdown-item" href="shop.html?brand=${b}">${b}</a></li>`); });
-
-    function submitForm() {
-      const name = $('#cName').val().trim();
-      const msg = $('#cMsg').val().trim();
-      if (!name || !msg) { showToast('Please fill required fields!'); return; }
-      showToast('Message sent! We will contact you soon.');
-      $('#cName,#cPhone,#cEmail,#cMsg').val('');
-    }
-
-    function showToast(msg) { $('#toastNotify').text(msg).addClass('show'); setTimeout(() => $('#toastNotify').removeClass('show'), 2800); }
+  <script src="javascript/contact.js">
   </script>
 </body>
 

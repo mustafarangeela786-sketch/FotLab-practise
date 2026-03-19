@@ -1,0 +1,233 @@
+ :root {
+     --black: #111;
+     --off-white: #f8f8f8;
+     --border: #e0e0e0;
+ }
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: 'Montserrat', sans-serif;
+     background: #fff;
+     color: #333;
+ }
+
+ .navbar {
+     background: rgba(255, 255, 255, 0.96);
+     backdrop-filter: blur(12px);
+     border-bottom: 1px solid var(--border);
+     padding: 12px 0;
+     position: fixed;
+     top: 0;
+     width: 100%;
+     z-index: 1000;
+ }
+
+ .navbar.scrolled {
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+ }
+
+ .navbar-brand {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 32px;
+     letter-spacing: 4px;
+     color: var(--black) !important;
+ }
+
+ .navbar-brand span {
+     color: #888;
+ }
+
+ .nav-link {
+     font-size: 12px;
+     font-weight: 600;
+     letter-spacing: 1.5px;
+     text-transform: uppercase;
+     color: #333 !important;
+     padding: 8px 16px !important;
+ }
+
+ .nav-link:hover {
+     color: var(--black) !important;
+ }
+
+ .dropdown-menu {
+     border: 1px solid var(--border);
+     border-radius: 0;
+     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+     padding: 8px 0;
+ }
+
+ .dropdown-item {
+     font-size: 12px;
+     font-weight: 600;
+     letter-spacing: 1px;
+     text-transform: uppercase;
+     padding: 10px 20px;
+     transition: all 0.2s;
+ }
+
+ .dropdown-item:hover {
+     background: var(--off-white);
+     padding-left: 28px;
+ }
+
+ .page-hero {
+     background: var(--black);
+     padding: 130px 0 80px;
+     position: relative;
+     overflow: hidden;
+ }
+
+ .page-hero::before {
+     content: '';
+     position: absolute;
+     inset: 0;
+     background: url('https://tse2.mm.bing.net/th/id/OIP.GCqFS8BpcJ4ZLHNlQjykfwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3') center/cover;
+     opacity: 0.15;
+ }
+
+ .page-hero-title {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 80px;
+     color: white;
+     letter-spacing: 2px;
+     position: relative;
+ }
+
+ .page-hero-sub {
+     font-size: 12px;
+     color: rgba(255, 255, 255, 0.5);
+     letter-spacing: 3px;
+     text-transform: uppercase;
+     position: relative;
+     margin-top: 8px;
+ }
+
+ section {
+     padding: 80px 0;
+ }
+
+ .sec-label {
+     font-size: 10px;
+     font-weight: 700;
+     letter-spacing: 4px;
+     text-transform: uppercase;
+     color: #999;
+     margin-bottom: 12px;
+ }
+
+ .sec-title {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 52px;
+     letter-spacing: 1px;
+     color: var(--black);
+ }
+
+ .sec-line {
+     width: 48px;
+     height: 2px;
+     background: var(--black);
+     margin: 16px 0 30px;
+ }
+
+ .body-text {
+     font-size: 14px;
+     line-height: 1.9;
+     color: #666;
+ }
+
+ .stat-box {
+     border: 1px solid var(--border);
+     padding: 32px;
+     text-align: center;
+ }
+
+ .stat-num {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 52px;
+     color: var(--black);
+ }
+
+ .stat-lbl {
+     font-size: 10px;
+     font-weight: 700;
+     letter-spacing: 2px;
+     text-transform: uppercase;
+     color: #999;
+     margin-top: 4px;
+ }
+
+ .team-card {
+     border: 1px solid var(--border);
+     overflow: hidden;
+     transition: all 0.3s;
+ }
+
+ .team-card:hover {
+     transform: translateY(-4px);
+     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+ }
+
+ .team-img {
+     height: 220px;
+     background: var(--off-white);
+     overflow: hidden;
+ }
+
+ .team-img img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ .team-body {
+     padding: 20px;
+ }
+
+ .team-name {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 22px;
+     letter-spacing: 1px;
+     color: var(--black);
+ }
+
+ .team-role {
+     font-size: 11px;
+     font-weight: 700;
+     letter-spacing: 2px;
+     text-transform: uppercase;
+     color: #999;
+     margin-top: 4px;
+ }
+
+ footer {
+     background: #0a0a0a;
+     color: rgba(255, 255, 255, 0.5);
+     padding: 60px 0 30px;
+ }
+
+ .footer-brand {
+     font-family: 'Bebas Neue', sans-serif;
+     font-size: 36px;
+     letter-spacing: 5px;
+     color: white;
+     margin-bottom: 12px;
+ }
+
+ .footer-link {
+     display: block;
+     font-size: 12px;
+     color: rgba(255, 255, 255, 0.4);
+     text-decoration: none;
+     margin-bottom: 10px;
+     transition: color 0.2s;
+ }
+
+ .footer-link:hover {
+     color: white;
+ }
