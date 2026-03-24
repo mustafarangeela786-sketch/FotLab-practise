@@ -867,6 +867,9 @@
      transform: translateY(0);
  }
 
+ .remove-link{
+  text-decoration: none;  
+ }
  /* Animations on scroll */
  .reveal {
      opacity: 0;
